@@ -8,11 +8,7 @@ class Post(models.Model):
     #Each post is written by a user and a user can write several posts
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
-    text = models.TextField()
-    # published_date = models.DateTimeField(default=timezone.now)
-    # created_date = models.DateTimeField(auto_now_add=True)
-    #class Meta:
-    #    ordering = ('-published_date',)
+    text = models.TextField()    
 
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True,null=True)
