@@ -18,6 +18,9 @@ class Post(models.Model):
         self.save()
 
     def approve_comments(self):
+        # If you'll note, in the Comment class, the post field is a ForeignKey
+        # whose related name is "comments" - this is the comments referred to in self.comments
+        # - you have access to all the Comment records that link to a particular Post through the related name.
         return self.comments.filter(approved_comment=True)
 
     def get_absolute_url(self):
