@@ -11,7 +11,7 @@ class PostForm(forms.ModelForm):
 
     class Meta():
         # indicate which model to use to build the form in the Meta class of the form
-        model = Post
+        model = Post   # Create a form based on Post model
         fields = ('author','title','text')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'textinputclass'}),
