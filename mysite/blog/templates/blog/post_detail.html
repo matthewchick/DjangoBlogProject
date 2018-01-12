@@ -10,7 +10,8 @@
         {% else %}
             <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
-
+        {# linebreakbr Converts all newlines in a piece of plain text to HTML line breaks (<br />).#}
+        {# if chaining filters, a filter applied after safe can make the contents unsafe again #}
       <p class='postcontent' >{{ post.text|safe|linebreaksbr }}</p>
 
       {% if user.is_authenticated %}
@@ -21,6 +22,7 @@
   <hr>
   <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
   <div class="container">
+  {# for ... empty -> array is empty or not found https://docs.djangoproject.com/en/2.0/ref/templates/builtins/   #}
   {% for comment in post.comments.all %}
   <br>
       {% if user.is_authenticated or comment.approved_comment %}

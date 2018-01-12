@@ -17,6 +17,12 @@ Including another URLconf
     This prevents the reverse() Django function and
     the {% url %} template function from returning the wrong URL
     because the URL-pattern name happened to match in another app.
+    Create a built-in login
+    https://simpleisbetterthancomplex.com/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html
+    1. django.contrib.auth in INSTALLED_APPS in the settings.py
+    2. python manage.py createsuperuser
+    3. import django.contrib.auth.views in urls.py
+    4. By default, the django.contrib.auth.views.login view renders the registration/login.html
 """
 from django.conf.urls import url, include
 from django.contrib import admin
@@ -27,7 +33,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
     url(r'accounts/login/$', views.login, name='login'),
-    url(r'accounts/logout/$', views.login, name='logout', kwargs={'next_page','/'}),
+    # url(r'accounts/logout/$', views.logout, name='logout', kwargs={'next_page','/'}),
 ]
 
 if settings.DEBUG:
